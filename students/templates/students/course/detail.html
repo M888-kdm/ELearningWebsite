@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+    {{ object.title }}
+{% endblock %}
+{% block extracss %} <link rel="stylesheet" href="{% static 'css/manage_module_detail.css' %}"></link> {% endblock %}
+{% block content %}
+    <div class="row justify-content-around align-items-center bg-blue px-5 py-4 text-white">
+        <div class="course-description col-6">
+            <h1 class="fw-bold">{{course.title}}</h1>
+            <div class="line bg-green my-3 col-3"></div>
+            <h5>{{ course.overview }}</h5>
+        </div>
+        <img src="{{course.image.url}}" class="img-fluid col-3">
+    </div>
+    <div class="container-fluid mx-0 px-0 d-flex">
+        <div class="contents col-2 pt-4">
+            <!-- <h3>Modules</h3> -->
+            <ul id="modules" class="list-unstyled d-flex flex-column align-items-center">
+                {% for m in object.modules.all %}
+                <li data-id="{{ m.id }}" {% if m == module %} class="selected my-1 w-100 text-center py-2"{% else %} class="my-1 w-100 text-center py-2" {% endif %}>
+                    <a href="{% url "student_course_detail_module" object.id m.id %}">
+                        <span class="order fw-bold"> Module {{ m.order|add:1 }}</span>
+                        <br/>
+                        {{ m.title }}
+                    </a>
+                </li>
+                {% empty %}
+                <li>No modules yet.</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="module col-10 mb-4">
+            <div class="container col-8 mt-5">
+                <h1>{{module.title}}</h1>
+                <p>{{module.description}}</p>
+                <div class="line bg-dark my-3 col-3"></div>
+                {% for content in module.contents.all %}
+                    {% with item=content.item type=content.content_type%}
+                    <div class="content d-flex">
+                        <div class="content-description w-100">
+                            <h4 class="mb-3 fw-bold">{{ item.title }}</h4>
+                            {{item.render}}
+                        </div>
+                    </div>
+                    {% endwith %}
+                    <div class="line1 bg-purple my-3"></div>
+                {% endfor %}
+            </div>
+            
+        </div>
+    </div>
+{% endblock %}

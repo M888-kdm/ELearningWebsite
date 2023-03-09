@@ -1,0 +1,14 @@
+.contents{
+    background-color:rgb(242, 241, 241);
+}
+
+.selected{
+    background-color: rgb(216, 216, 216);
+    color: #14C38E;
+}
+
+.top-image{
+    padding: 0;
+    border-left: solid 5px white;
+    border-bottom: solid 8px white;
+}

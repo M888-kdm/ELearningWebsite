@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static%}
+{% block title %}My courses{% endblock %}
+{% block extracss %} <link rel="stylesheet" href="{% static 'css/student_course_list.css' %}"> {% endblock %}
+{% block content %}
+    <!-- <h1 class="mt-3">My courses</h1> -->
+    
+    <div class="module container col-10">
+    {% for course in object_list %}
+        <div class="row d-flex border p-4 my-4">
+            <img src="{{course.image.url}}" alt="" class="course-image img-fluid col-4 px-0 border rounded-3">
+            <div class="course-info col-8 mx-0 p-4 d-flex flex-column justify-content-center">
+                <p class="my-0"><a href="{% url "course_list_subject" course.subject.slug %}" class="course-subject">{{ course.subject }}</a></p>
+                <h3 class="fw-bold"><a href="{% url 'student_course_detail' course.id %}">{{ course.title }}</a></h3>
+                <div class="line col-1 bg-purple my-2"></div>
+                <p class="course-description-text mb-1 text-secondary">{{ course.overview }}</p>
+                <p class="mt-3 mb-0 align-self-end bg-dark px-4 py-3 border rounded-3">
+                    <a href="{% url 'student_course_detail' course.id %}" class="text-white"><i class="fa-solid fa-play me-2"></i> Resume Course</a>
+                </p>
+            </div>
+        </div>
+    {% empty %}
+        <p>
+        You are not enrolled in any courses yet.
+        <a href="{% url "course_list" %}">Browse courses</a>
+        to enroll in a course.
+        </p>
+    {% endfor %}
+    </div>
+{% endblock %}

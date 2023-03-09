@@ -1,0 +1,35 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% block title %}My courses{% endblock %}
+{% block extracss %}<link rel="stylesheet" href="{% static 'css/manage_course_list.css' %}">{% endblock %}
+{% block content %}
+
+<div class="module container col-10 d-flex flex-column">
+    {% for course in object_list %}
+        <div class="row d-flex border p-4 my-4 border rounded-3">
+            <img src="{{course.image.url}}" alt="" class="course-image img-fluid col-4 px-0 rounded-3">
+            <div class="course-info col-8 mx-0 p-4 d-flex flex-column justify-content-center">
+                <p class="course-subject my-0 font-italic">{{ course.subject }}</p>
+                <h3 class="fw-bold"><a href="{% url 'student_course_detail' course.id %}">{{ course.title }}</a></h3>
+                <div class="line col-1 bg-purple my-2"></div>
+                <p class="course-description-text text-secondary">{{ course.overview }}</p>
+                <div class="d-flex justify-content-end mt-4">
+                    <button class="btn mx-2 edit"><a href="{% url "course_edit" course.id %}"><i class="fa-solid fa-pencil text-primary"></i></a></button>
+                    <button class="btn mx-2 delete"><a href="{% url "course_delete" course.id %}"><i class="fa-solid fa-trash-can text-danger"></i></a></button>
+                    <button class="btn mx-2 edit border border-2 border-dark color-purple"><a href="{% url "course_module_update" course.id %}" class="fw-bold"> Edit modules</a></button>
+                    {% if course.modules.count > 0 %}
+                    <button class="btn mx-2 manage border border-2 border-dark color-purple"><a href="{% url "module_content_list" course.modules.first.id %}" class="fw-bold">Manage contents</a></button>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% empty %}
+        <p>You haven't created any courses yet.</p>
+    {% endfor %}
+        <div class="button col-3 align-self-end bg-dark d-flex justify-content-center rounded-3 p-2 mb-4">
+            <a href="{% url "course_create" %}" class="text-white create-course-button"><i class="fa-solid fa-plus me-2"></i> Create a new course</a>
+        </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,33 @@
+form{
+    box-shadow: -1px 0px 10px -5px #000000;;
+}
+
+input{
+    border-style: solid !important;
+    border-width: 1px;
+    height: 40px;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: none;
+}
+
+input[type=file]{
+    padding: 5px;
+}
+
+textarea{
+    border-style: solid;
+    height: 65px;
+    padding: 10px;
+}
+
+select{
+    border-style: solid;
+    height: 35px;
+    border-radius: 5px;
+}
+
+.create-button{
+    border-style: none;
+}
+

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extracss %}<link rel="stylesheet" href="{% static 'css/register.css' %}">{% endblock %}
+{% block content %}
+
+<div class="container-fluid d-flex p-0">
+    <div class="w-50 block-1">
+    </div>
+    <div class="w-50 block-2 d-flex">
+        <form method="post" class="register-form col-10 my-5 d-flex flex-column align-items-center mx-auto">
+            {% csrf_token %}
+            <h1 class="fw-bold mb-4">Create your account</h1>
+            <div class="form-group d-flex flex-column">
+                <label for="{{ form.first_name.id_for_label }}" class="mb-2 fw-bold">First Name</label>
+                {{user_form.first_name}}
+            </div>
+            <div class="form-group d-flex flex-column">
+                <label for="{{ form.last_name.id_for_label }}" class="mb-2 fw-bold">Last Name</label>
+                {{user_form.last_name}}
+            </div>
+            <div class="form-group d-flex flex-column">
+                <label for="{{ form.username.id_for_label }}" class="mb-2 fw-bold">Username</label>
+                {{user_form.username}}
+            </div>
+            <div class="form-group d-flex flex-column">
+                <label for="{{ form.password.id_for_label }}" class="mb-2 fw-bold">Password</label>
+                {{user_form.password}}
+            </div>
+            <div class="form-group d-flex flex-column">
+                <label for="{{ form.password2.id_for_label }}" class="mb-2 fw-bold">Password Confirmation</label>
+                {{user_form.password2}}
+            </div>
+            <button type="submit" class="submit fw-bolder mt-4 bg-blue color-green">Register</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

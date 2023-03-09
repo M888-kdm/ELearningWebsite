@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extracss %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+{% block content%}
+    <div class="container-fluid d-flex p-0 ext-container">
+        <div class="block-1 w-50 m-0 d-flex">
+            <img src="{% static 'assets/images/login_image.jpeg' %}" alt="" class="w-50">
+            <div class="band bg-blue w-50 p-4 text-white d-flex flex-column justify-content-center">
+                <i class="fa-solid fa-graduation-cap fa-3x mb-5 mx-auto"></i>
+                <p>
+                    “A plant needs roots in order to grow. With man it is the other way around: only when he grows does he have roots and feels at home in the world.”
+                </p>
+                <p style="font-style: italic;">~ Eric Hoffer</p>
+            </div>
+        </div>
+        <div class="block-2 w-50 d-flex flex-column align-items-center justify-content-center py-5">
+            <i class="fa-solid fa-clover fa-3x"></i>
+            <h1 class="display-2 fw-bold m">WELCOME</h1>
+            <h1 class="fw-bold">Log-in</h1>
+            <form method="post" class="d-flex flex-column">
+                {% csrf_token %}
+                <div class="form-group d-flex flex-column col-5">
+                    <label for="{{ form.username.id_for_label }}" class="mb-2 fw-light">Username</label>
+                    {{form.username}}
+                </div>
+                <div class="form-group d-flex flex-column col-5">
+                    <label for="{{ form.password.id_for_label }}" class="mb-2 fw-light">Password</label>
+                    {{form.password}}
+                </div>
+                <button class="mx-auto submit fw-bold bg-green" type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

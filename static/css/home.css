@@ -1,0 +1,11 @@
+.stars{
+    height: 88vh;
+    width: 100%;
+}
+
+.upper{
+    background-color: rgba(0, 0, 0, 0.6);
+    height: 88vh;
+    width: 100%;
+    position: absolute;
+}

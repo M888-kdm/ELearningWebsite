@@ -1,0 +1,52 @@
+{% extends "contentBase.html" %}
+{% load static %}
+{% block extracss %}<link rel="stylesheet" href="{% static 'css/content_creation.css' %}">{% endblock %}
+{% block title %}
+    {% if object %}
+    Edit content "{{ object.title }}"
+    {% else %}
+    Add new content
+    {% endif %}
+{% endblock %}
+{% block content %}
+    <div class="container module col-6 d-flex flex-column px-0 py-4">
+        <form action="" method="post" enctype="multipart/form-data" class="d-flex form flex-column align-items-center my-auto p-3">
+            <i class="fas fa-satellite fa-3x mb-4" class="d-block m-auto"></i>
+            <h1 class="col-11 p-3 mb-4 fw-bold form-title text-center">
+                {% if object %}
+                Edit content
+                {% else %}
+                Add new content
+            {% endif %}
+            </h1>
+            <div class="line bg-primary"></div>
+            <h2>Course info</h2>
+            <div class="form-group d-flex flex-column my-2">
+                <label for="{{ form.title.id_for_label }}" class="mb-2 text-secondary fw-light">Title</label>
+                {{form.title}}
+            </div>
+            {% if form.fields.content %}
+                <div class="form-group d-flex flex-column my-2">
+                    <label for="{{ form.content.id_for_label }}" class="mb-2 text-secondary fw-light">Content</label>
+                    {{form.content}}
+                </div>
+            {% elif form.fields.url %}
+                <div class="form-group d-flex flex-column my-2">
+                    <label for="{{ form.content.id_for_label }}" class="mb-2 text-secondary fw-light">URL</label>
+                    {{form.url}}
+                </div>
+            {% else %}
+                <div class="form-group d-flex flex-column my-2"></div>
+                    <label for="{{ form.file.id_for_label }}" class="mb-2 text-secondary fw-light">File</label>
+                    {{form.file}}
+                    <button type="submit" class="d-block mx-auto px-5 py-1 col-4 mt-4 create btn"><h4 class="fw-bold">Create</h4></button>
+                </div>
+            {% endif %}
+            {% if form.fields.file %}
+            {% else %}
+            <button type="submit" class="d-block mx-auto px-5 py-2 col-5 mt-4 bg-white create btn"><h4 class="fw-bold">Create</h4></button>
+            {% endif %}
+            {% csrf_token %}
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+  {% if subject %}
+    {{ subject.title }} courses
+  {% else %}
+    All courses
+  {% endif %}
+{% endblock %}
+
+{% block extracss %}<link rel="stylesheet" href="{% static 'css/course_list.css' %}">{% endblock %}
+
+{% block content %}
+
+  <div class="container-fluid pt-0 px-0 d-flex flex-column">
+    <!-- Images and some text -->
+    <div class="container-fluid mb-5 banner d-flex px-0">
+      <div class="col-6 d-flex justify-content-center">
+        <img src="{% static 'assets/images/african_college_student.jpeg'%}" alt="" class="illustration-image img-fluid w-100">
+      </div>
+      <div class="col-6 bg-purple text-white p-5">
+        <h1 class="display-4 col-10 fw-bold">Learn about anything you want</h1>
+        <h3>Choose between a wide range of subjects and start learning.</h3>
+        <div class="icons d-flex mx-auto col-8 justify-content-between mt-5">
+          <i class="fa-solid fa-atom fa-3x"></i>
+          <i class="fa-solid fa-flask-vial fa-3x"></i>
+          <i class="fa-solid fa-calculator fa-3x"></i>
+          <i class="fa-solid fa-book fa-3x"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="contents px-3 container">
+      <div id="modules" class="container d-flex flex-wrap justify-content-center text-center">
+        <h6 {% if not subject %}class="selected p-2 my-1 subject_title col-2 rounded-3"{% else %}class="p-2 my-1 subject_title col-2 rounded-3"{% endif %}>
+          <a href="{% url 'course_list' %}">All</a>
+        </h6>
+        {% for s in subjects %}
+          <h6 {% if subject == s %}class="selected p-2 my-1 subject_title mx-1 col-2 rounded-3"{%else%}class="p-2 my-1 subject_title mx-1 col-2 rounded-3"{% endif %}>
+            <a href="{% url 'course_list_subject' s.slug %}">
+            {{ s.title }}
+            </a>
+          </h6>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="line1 col-10 bg-purple mx-auto my-4"></div>
+
+    <div class="container module px-5 py-4">
+      {% comment %} <h1 class="subject-title ms-3 fw-bold mb-4">
+        {% if subject %}
+          {{ subject.title }} courses
+        {% else %}
+          All courses
+        {% endif %}
+      </h1> {% endcomment %}
+      <div class="container-fluid d-flex justify-content-start flex-wrap">
+      {% for course in courses %}
+        {% with value=subject subject=course.subject %}
+        <div class="course-card mx-2 mb-5 pb-3 border rounded-top">
+          <img src="{{course.image.url}}" alt="" class="course-image img-fluid rounded-top mb-3">
+          <div class="text px-2">
+            <p class="m-0">
+              {% if not value %}
+                <a href="{% url "course_list_subject" subject.slug %}" class="course-subject text-secondary">{{subject}}</a>
+              {% endif%}
+            </p>
+            <h6 class="mb-2">
+              <a href="{% url "course_detail" course.slug %}" class="course-title fw-bold">
+                {{ course.title }}
+              </a>
+            </h6>
+            <p class="fw-light m-0 course-owner-name">
+              {{ course.owner.get_full_name }}
+            </p>
+          </div>
+        </div>
+        {% endwith %}
+      {% endfor %}
+      </div>
+    </div>
+
+  </div>
+{% endblock %}

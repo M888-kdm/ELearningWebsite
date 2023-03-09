@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+    {{ object.title }}
+{% endblock %}
+{% block extracss %} <link rel="stylesheet" href="{% static 'css/course_detail.css' %}"></link> {% endblock %}
+{% block content %}
+    {% with subject=object.subject %}
+    <div class="container-fluid d-flex p-0">
+        <div class="module p-4 col-6 d-flex flex-column bg-purple text-white">
+            <img src="{{ object.image.url }}" alt="" class="img-fluid col-7 my-3 mx-auto rounded-3">
+            <h1>
+                {{ object.title }}
+            </h1>
+            <div class="line bg-green col-3 my-2"></div>
+            <h2>Overview</h2>
+            <a href="{% url "course_list_subject" subject.slug %}" class="text-white fw-bold">
+            {{ subject.title }}</a>
+            <p>{{ object.modules.count }} modules.</p>
+            <p class="">Instructor: {{ object.owner.get_full_name }}</p>
+            <p>{{ object.overview|linebreaks }}</p>
+            <div class="modules">
+            </div>
+            {% if request.user.is_authenticated %}
+                <form action="{% url "student_enroll_course" %}" method="post" class="mx-auto w-100">
+                {{ enroll_form }}
+                {% csrf_token %}
+                <button type="submit" class="btn color-green fw-bold col-4 bg-blue border-2 rounded-3 mx-auto">Enroll Now</button>
+                </form>
+            {% else %}
+                <a href="{% url "register" %}" class="button btn color-purple bg-blue color-green fw-bold col-4">
+                    Register to enroll
+                </a>
+          {% endif %}
+        </div>
+        <div class="modules py-4 px-5 col-6">
+            <h1 class="league-spartan">Modules</h1>
+            <div class="line bg-purple col-2 mt-3 mb-4"></div>
+            <ul class="list-unstyled border border-purple module-list">
+                {% for module in object.modules.all %}
+                    <li class="p-2 border-top">{{ module.title }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    {% endwith %}
+{% endblock %}

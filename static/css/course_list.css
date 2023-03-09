@@ -1,0 +1,50 @@
+.subject_title a {
+    color: black;
+    text-decoration: none;
+    font-family: "Glacial Indifference";
+    text-transform: uppercase;
+    font-weight: 300;
+}
+
+.subject_title{
+    border: solid 1px gray;
+    /* font-size: 1.2rem; */
+}
+
+.course-image{
+    height: 200px;
+    width: 100%;
+}
+
+.course-card{
+    width: 375px;
+}
+
+.course-owner-name{
+    font-size: 0.8rem;
+}
+
+.selected{
+    border-color:rgb(40, 0, 200);
+    background-color: black;
+    border-width: 3px;
+}
+
+.selected a{
+    color: white;
+    font-weight: bold;
+}
+
+.subject-title{
+    font-weight: bold;
+}
+
+.course-title{
+    font-family: 'Glacial Indifference';
+}
+
+.course-subject{
+    font-family: 'Glacial Indifference';
+    text-transform: uppercase;
+    font-size: 13px;
+}

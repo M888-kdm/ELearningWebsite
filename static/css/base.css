@@ -1,0 +1,107 @@
+:root{
+    --blue: rgb(2, 26, 38);
+    --green: #00ff84;
+    --orange: #FF4949;
+    --purple: rgb(40, 0, 200);
+}
+
+html{
+    font-size: 16px;
+}
+
+body{
+    padding: 0px;
+    font-family: 'Glacial Indifference', 'GT Walsheim', 'Jost', 'Roboto';
+    color: black !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+}
+
+.league-spartan{
+    font-family: 'League Spartan';
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.bg-dark{
+    background-color: black !important;
+}
+
+.bg-orange{
+    background: #FF4949;
+}
+
+.bg-green{
+    background-color: var(--green);
+}
+
+.bg-purple{
+    background-color: var(--purple);
+}
+
+.color-purple{
+    color: var(--purple);
+}
+
+.color-orange{
+    color: var(--orange);
+}
+
+.color-green{
+    color: var(--green);
+}
+
+.color-blue{
+    color: var(--blue);
+}
+
+.bg-blue{
+    background-color: var(--blue);
+}
+
+.border-green{
+    border-color: var(--green);
+}
+
+.border-purple{
+    border-color: var(--purple);
+}
+
+.line{
+    height: 7px;
+    border-radius: 8px;
+}
+
+.line1{
+    height: 2px;
+    border-radius: 10px;
+}
+
+/* nav{
+    box-shadow: 0px 3px 8px -3px rgba(0,0,0,0.75)
+} */
+
+.dashboard{
+    font-weight: bold;
+    border: solid 2px white;
+    border-radius: 30px;
+}
+
+.orange-gradient{
+    background: #fc4a1a;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #f7b733, #fc4a1a);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #f7b733, #fc4a1a); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.green-gradient{
+    background: #007991;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #78ffd6, #007991);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #78ffd6, #007991); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+

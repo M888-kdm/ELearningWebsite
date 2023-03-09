@@ -1,0 +1,22 @@
+input{
+    border-style: none;
+    border-radius: 5px;
+    height: 50px;
+    width: 400px;
+    margin-bottom: 30px;
+    background-color: rgb(240, 240, 240);
+    padding-left: 10px;
+    padding-right: 10px;
+    color: gray;
+}
+
+.submit{
+    font-size: 20px;
+    border-style: none;
+    height: 40px;
+    width: 250px;
+}
+
+.ext-container{
+    height: 89vh;
+}

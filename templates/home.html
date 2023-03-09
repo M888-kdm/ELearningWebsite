@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extracss %} <link rel="stylesheet" href="{% static 'css/home.css' %}"> {% endblock %}
+{% block content %}
+    <div class="container-fluid d-flex p-0">
+        <img src="{% static 'assets/images/stars.jpeg' %}" alt="" class="img-fluid stars">
+        <div class="row upper m-0 text-white justify-content-center flex-column align-items-center">
+            <div class="brands col-3 d-flex justify-content-center mb-5">
+                <i class="fas fa-infinity fa-5x"></i>
+                <i class="fa-solid fa-8 fa-5x"></i>
+                <i class="fas fa-infinity fa-5x"></i>
+            </div>
+            <h1 class="col-5 text-center mt-5">Explore a World of limitless possibilities with <span class="fw-bold color-green">Trifle</span></h1>
+        </div>
+    </div>
+{% endblock %}

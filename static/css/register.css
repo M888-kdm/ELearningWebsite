@@ -1,0 +1,23 @@
+.block-1{
+    background-image: url("../images/register_page_background.jpeg");
+    background-size: cover;
+}
+
+input{
+    border : solid 1px gray;
+    border-radius: 10px;
+    height: 35px;
+    width: 400px;
+    margin-bottom: 25px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: gray;
+}
+
+
+.submit{
+    border-style: none;
+    border-radius: 50px;
+    height: 40px;
+    width: 200px;
+}

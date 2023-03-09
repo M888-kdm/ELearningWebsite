@@ -1,0 +1,40 @@
+body{
+    background-color: #e9e9e9;
+    display: flex;
+    flex-direction: column;
+}
+
+label{
+    font-weight: bold;
+}
+
+input{
+    border-style: solid 0.5px black !important;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: white;
+    color: black;
+}
+
+textarea{
+    border-style: solid 0.5px black !important;
+    border-radius: 5px;
+    padding: 10px;
+    max-height: 150px;
+    /* background-color: rgb(186, 186, 186); */
+    background-color: white;
+    color: black;
+}
+
+.form{
+    /* background-color: rgb(237, 237, 237); */
+    border-radius: 10px;
+    border-left-width: 5px;
+    border-bottom-width: 5px;
+    border-color: black;
+}
+
+.container{
+    box-shadow: -1px 0px 15px -5px #000000;
+    background-color:rgb(40, 0, 200);
+}
